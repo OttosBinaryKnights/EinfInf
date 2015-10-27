@@ -1,0 +1,59 @@
+/*
+Median
+
+a)Schreiben Sie eine Java-Methode
+
+public static int median(int a, int b, int c),
+
+die von drei gegebenen ganzen Zahlen den Median (also den mittleren Wert in der sortierten Folge) der drei Zahlen ermittelt und zurück liefert.
+Beispiel: median(25, 11, 33) ergibt 25
+
+b) Geben Sie noch eine alternative Variante zur Bestimmung des Medians als Java-Methode median2 an.
+c) Wie sieht ein möglicher Testrahmen für Ihre Funktion median aus? Reichen Sie eine entsprechende main-Methode ein.
+Hinweis: Die main-Methode wird nicht automatisch geprüft aber in der Übung diskutiert.
+*/
+import java.util.Random;
+
+public class Median {
+   public static int median(int a, int b, int c){
+   // hier bitte Quelltext einfuegen
+	   if((a<b && a>c) || (a>b && a<c)) return a;
+	   if((b<a && b>c) || (b>a && b<c)) return b;
+	   else return c;
+   }
+   public static int median2(int a, int b, int c){
+   // hier bitte Quelltext einfuegen
+	   int[] tmp = {a,b,c};
+
+	   bubble(tmp);
+
+	   return tmp[1];
+
+   }
+   public static void main(String[] args) {
+   // hier bitte Testrahmen einfuegen
+	   Random rn = new Random();
+	   int a=rn.nextInt(100);
+	   int b=rn.nextInt(100);
+	   int c=rn.nextInt(100);
+
+	   System.out.println("Median of [" + a + ", " + b + ", " + c +"] is " + median(a,b,c));
+	   System.out.println("Median of [" + a + ", " + b + ", " + c +"] is " + median2(a,b,c));
+   }
+
+   public static void bubble(int[] x) {
+	      boolean sorted=false;
+	      int temp;
+
+	      while (!sorted){
+	         sorted = true;
+	         for (int i=0; i < x.length-1; i++)
+	            if (x[i] > x[i+1]) {
+	               temp       = x[i];
+	               x[i]       = x[i+1];
+	               x[i+1]     = temp;
+	               sorted = false;
+	            }
+	      }
+   }
+}
