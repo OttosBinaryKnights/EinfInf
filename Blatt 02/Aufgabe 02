@@ -1,0 +1,34 @@
+/*
+Umrechnung von Dezimal- in Dualzahl
+
+Schreiben Sie eine Java-Methode
+
+public static String transformDual(int dec)
+
+zur Umwandlung einer beliebigen natürlichen Zahl dec (dec>0) in eine Dualzahl. Testen Sie diese Methode an verschiedenen Beispielen.
+Beispiel: transformDual(13) liefert "1101"
+
+Hinweis:
+Benutzen Sie zur Lösung dieser Aufgaben keine Standardmethoden wie z. B. Integer.toBinaryString(...)
+ */
+
+public class Transformation {
+   public static String transformDual(int dec) {
+       // hier bitte Quelltext einfuegen
+	   String dual="";
+
+	   while(!(dec==0)){
+		   if(dec%2==1) dual="1" + dual;
+		   else dual="0" + dual;
+
+		   dec/=2;
+	   }
+	   return dual;
+   }
+
+   public static void main(String[] args) {
+      // hier bitte Testrahmen einfuegen
+	   System.out.println(transformDual(10));
+
+   }
+}
