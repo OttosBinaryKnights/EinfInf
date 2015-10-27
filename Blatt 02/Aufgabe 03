@@ -1,0 +1,61 @@
+/*
+Zahlenspielerei MyIntArray
+
+Schreiben Sie eine Klasse MyIntArray mit verschiedenen Methoden:
+Die Methode
+
+public static int[] createRandom(int n)
+
+bekommt die Größe des zu erzeugenden Feldes übergeben, die Elemente des Feldes sollen mit ganzzahligen Zufallszahlen aus dem Bereich 5 bis einschließlich 99 belegt werden.
+
+Hinweis: Nutzen Sie zum Generieren der Zufallszahlen die Standardfunktion random aus der Klasse Math. Mit der Anweisung
+int z = (int)(maxrand*Math.random());
+wird eine Zufallszahl z zwischen 0 und maxrand erzeugt (0 <= z < maxrand).
+
+public static String toString(int[] a)
+soll die Elemente von a in einem String zurück liefern. Testen Sie in main Ihr toString(...) und geben Sie das Feld auch mit der vordefinierten Methode java.util.Arrays.toString(...) aus.
+
+public static int posMin(int[] a)
+
+soll die Position der kleinsten Zahl in a liefern. Wenn das minimale Element mehrmals vorkommt, soll nur die Position des ersten Auftretens ermittelt werden.
+
+public static void swap(int[] a)
+
+vertauscht das erste mit dem letzten Element des Feldes a.
+ */
+
+public class MyIntArray {
+	public static int[] createRandom(int n) {
+           // hier bitte Quelltext einfuegen
+		int[] array = new int[n];
+		for(int i=0; i<n; i++)
+			array[i] = (int)(105*Math.random()+5);
+
+		return array;
+
+	}
+
+	public static String toString(int[] a){
+           // hier bitte Quelltext einfuegen
+		String str = "[" + a[0];
+		for(int i=1;i<a.length;i++)
+			str = str + ", " + a[i];
+		str = str + "]";
+		return str;
+	}
+
+	public static int posMin(int[] a) {
+           // hier bitte Quelltext einfuegen
+		int posMin=0;
+		for(int i=1;i<a.length;i++)
+			if(a[posMin]>a[i]) posMin=i;
+		return posMin;
+	}
+	public static void swap(int[] a) {
+           // hier bitte Quelltext einfuegen
+		int tmp=a[0];
+		a[0]=a[a.length-1];
+		a[a.length-1]=tmp;
+
+	}
+}
