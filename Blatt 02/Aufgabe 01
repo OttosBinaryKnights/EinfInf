@@ -17,7 +17,7 @@ import java.util.Random;
 public class Median {
    public static int median(int a, int b, int c){
    // hier bitte Quelltext einfuegen
-	   if((a<b && a>c) || (a>b && a<c)) return a;
+	   if((a<=b && a>=c) || (a>=b && a<=c)) return a;
 	   if((b<a && b>c) || (b>a && b<c)) return b;
 	   else return c;
    }
