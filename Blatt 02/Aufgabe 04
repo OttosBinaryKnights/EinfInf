@@ -1,0 +1,51 @@
+public class Zahlenpalindrome {
+
+	public static int numDigits(int n){
+		int anz = 1;
+
+		while (n>9){
+			n=n/10;
+			anz++;
+		}
+		return anz;
+	}
+
+	public static int getDigit(int n, int index){
+		int stelle = 0;
+
+		if (index<=0) return n%10;
+		if (index>numDigits(n)-1)index=numDigits(n)-1;
+
+		while (index>=0){
+			stelle=n%10;
+			n=n/10;
+			index--;
+		}
+
+		return stelle;
+	}
+
+	public static boolean isPalindrome(int n){
+		int laenge=numDigits(n);
+		int start=0;
+		boolean test = false;
+
+		while (laenge>=start){
+			if (getDigit(n,start)==getDigit(n,laenge-1)){
+				start++;
+				laenge--;
+				test = true;
+			} else return false;
+		}
+		return test;
+
+
+	}
+
+	public static void main(String[] args) {
+		System.out.println(numDigits(12));
+		System.out.println(getDigit(1283, -1));
+		System.out.println(isPalindrome(121));
+	}
+
+}
