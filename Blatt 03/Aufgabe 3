@@ -1,0 +1,59 @@
+/*
+Es ist folgende Funktion gegeben:
+
+Algorithm: f(x,y)
+Input:     x,y ganzzahlig
+Output:    ?
+   if y = 0 then x
+            else f(x-1, y-1)
+   fi
+
+a) Beschreiben Sie die Auswertung an mehreren Beispielen. Was berechnet diese Funktion? Für welche Werte terminiert der Algorithmus nicht?
+b) Überlegen Sie wie der Algorithmus zu erweitern ist, damit er für alle ganzzahligen Werte terminiert. Schreiben Sie dafür eine Java-Methode
+
+	public static int rek(int x, int y).
+
+c) Formulieren Sie nun Ihren verbesserten Algorithmus als iterative Methode
+
+	public static int iter(int x, int y).
+
+*/
+
+public class rekursion {
+/*
+ * Im angegebenen Pseudocode wird x-y berechnet.
+ * Es terminiert nicht wenn y<0 ist.
+ *
+ */
+	public static int rek(int x, int y){
+
+		if (y==0){
+			return x;
+		}else if (y>0){
+			return rek(x-1, y-1);
+		}else return rek(x+1, y+1);
+	}
+
+	public static int iter(int x, int y){
+
+		if (y==0){
+			return x;
+		} else if (y>0){
+			for (;y>0;y--){
+				x--;
+			}
+			return x;
+		} else {
+			for (;y<0;y++){
+				x++;
+			}
+			return x;
+		}
+	}
+	public static void main(String[] args) {
+		int Erg=rek(3,-1);
+		int Erg2=iter(3,-1);
+		System.out.println(Erg + " " + Erg2);
+	}
+
+}

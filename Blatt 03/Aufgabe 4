@@ -1,0 +1,43 @@
+public class ggTEuklidischerAlgorithmus {
+
+	/*
+	 * wenn b = 0
+2      dann return a
+3  sonst wenn a = 0
+4      dann return b
+5  sonst wenn a > b
+6      dann return EUCLID_OLD_RECURSIVE(a - b, b)
+7  sonst return EUCLID_OLD_RECURSIVE(a, b - a)
+
+	 */
+
+	public static void main(String[] args) {
+		int x=4;
+		int y=8;
+
+		if (x==0) System.out.println(y);
+		if (y==0) System.out.println(x);
+		if (x>y){
+
+		}
+		/*
+		 * nicht rekursiv mit positiven Werten
+		 */
+		int a=12;
+		int b=36;
+
+		if (a==0){
+			System.out.println(b);
+		} else {
+			while (b!=0){
+				if (a>b){
+					a=a-b;
+				} else {
+					b=b-a;
+				}
+			}
+			System.out.println(a);
+		}
+	}
+
+}

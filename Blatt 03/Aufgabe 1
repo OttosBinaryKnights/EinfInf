@@ -1,0 +1,73 @@
+/*
+Befreundete Zahlen
+
+Als befreundete Zahlen (amicable numbers) werden Paare natürlicher Zahlen (n, m) mit n ≠ m bezeichnet, für die gilt:
+
+Die Summe der echten Teiler von n ergibt m und Summe der echten Teiler von m ergibt n.
+
+Bitte beachten Sie, dass auch 1 als Teiler von n betrachtet und mitsummiert wird, die Zahl n selbst aber nicht; beispielsweise ist die Summe der Teiler von 6 gleich 1 + 2 + 3.
+
+Schreiben Sie eine Java-Methode
+
+public static int[][] amicablePairs(int n),
+
+die n Paare befreundeter Zahlen liefert (Ergebnis ist eine zweispaltige Matrix).
+
+Hinweise:
+Bei der Berechnung der befreundeten Paare ist darauf zu achten, dass die erste Zahl im jeweiligen Tupel die kleinere ist und keine Dubletten auftauchen.
+Beachten Sie beim Testen, dass die Ermittlung der befreundeten Paare mitunter viel Rechenzeit benötigt. Es ist daher ratsam, das n recht klein zu halten.
+Diskutieren Sie dabei verschiedene Implementierungsvarianten.
+*/
+
+public class SpecialNumbers {
+
+	public static int sumTeiler(int x){
+		int sum = 0;
+
+		for (int i=1; i<x; i++){
+			if (x%i==0){
+				sum=sum+i;
+			}
+		}
+		return sum;
+	}
+
+	public static int[][] amicablePairs(int n) {
+		int[] [] friendlyNum= new int[2] [n];
+		int friendlyNum1=200;
+		int friendlyNum2=220;
+		int anzFN = 0;
+		int summeTeiler = 0;
+
+		while (friendlyNum2 < 1000000){
+
+			friendlyNum1=200;
+			summeTeiler = sumTeiler(friendlyNum2);
+			while(friendlyNum1!=summeTeiler && friendlyNum1<friendlyNum2){
+				friendlyNum1++;
+			}
+
+			if (friendlyNum2 == sumTeiler(friendlyNum1) && friendlyNum1 != friendlyNum2){
+				friendlyNum[0] [anzFN] = friendlyNum1;
+				friendlyNum[1] [anzFN] = friendlyNum2;
+				anzFN++;
+			}
+			friendlyNum2++;
+			if (anzFN == n) break;
+		}
+		return friendlyNum;
+
+	}
+
+
+	public static void main(String[] args) {
+		int n=3;
+		int[] [] a=new int[2] [n];
+		a = amicablePairs(n);
+
+
+		for (int i=0;i<n;i++){
+			System.out.println(a[0] [i] + " " + a[1] [i]);
+		}
+	}
+}
