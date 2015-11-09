@@ -24,3 +24,52 @@ Schreiben Sie eine rekursive Variante des Hornerschemas als Methode
 
 public static double evalHornerRek(double[] a, double x)
 */
+
+public class hornerschema {
+
+	public static double hornerRek(double[] a, double x, int anz){
+		if (anz==0) {
+			return a[0];
+		} else {
+
+			return x+a[anz]*hornerRek(a,x,--anz);
+		}
+	}
+
+	public static double evalHornerRek(double[] a, double x){
+		int anz = a.length-1;
+		double result = 0;
+		result = hornerRek(a,x,anz);
+		return result;
+	}
+
+	public static double evalHorner(double[] a, double x){
+		double result = a[a.length-1];
+		for (int i = a.length-2;i>=0;i--){
+			result = result * x+a[i];
+		}
+		return result;
+	}
+
+	public static double evalSimple(double[] a, double x){
+		int anz = a.length;
+		double result = 0;
+
+		if (anz==0) return 0;
+		for (int i=0;i<anz;i++){
+			result=result + a[i]*Math.pow(x, i);
+		}
+		return result;
+	}
+
+	public static void main(String[] args) {
+		double[] a = {1,2,3};
+		double x = 2;
+
+		System.out.println(evalSimple(a,x));
+		System.out.println(evalHorner(a,x));
+		System.out.println(evalHornerRek(a,x));
+
+	}
+
+}

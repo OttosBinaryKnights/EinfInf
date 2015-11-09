@@ -20,3 +20,33 @@ zur Berechnung der Ackermann-Zahl. Hinweis: Informieren Sie sich über die Klass
 Welches sind die Werte der Methodenaufrufe ackermann(1, 10), ackermann(2, 4), ackermann(3, 3)?
 Die Klasse BigInteger dient der Verarbeitung beliebig großer ganzer Zahlen. Warum gibt es bei der Berechnung der Ackermann-Zahl trotzdem Probleme?
 */
+
+import java.math.BigInteger;
+
+public class ackermann {
+
+	public static final BigInteger TWO = BigInteger.valueOf(2);
+
+	public static BigInteger ackermann(BigInteger x, BigInteger y){
+
+		if (y.equals(BigInteger.ZERO)) return y;
+		if (x.equals(BigInteger.ZERO)) return y.multiply(TWO);
+		if (y.equals(BigInteger.ONE)) {
+			return TWO;
+		} else {
+			return ackermann(x.subtract(BigInteger.ONE), ackermann(x,y.subtract(BigInteger.ONE)));
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+
+		System.out.println(ackermann(BigInteger.ONE,BigInteger.TEN));			//Ergebnis: 1024
+		System.out.println(ackermann(new BigInteger("2"),new BigInteger("4")));
+		System.out.println(ackermann(new BigInteger("3"),new BigInteger("3")));
+
+
+	}
+
+}
