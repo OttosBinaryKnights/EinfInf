@@ -21,9 +21,9 @@ Welches sind die Werte der Methodenaufrufe ackermann(1, 10), ackermann(2, 4), ac
 Die Klasse BigInteger dient der Verarbeitung beliebig großer ganzer Zahlen. Warum gibt es bei der Berechnung der Ackermann-Zahl trotzdem Probleme?
 */
 
-import java.math.BigInteger;
+	import java.math.BigInteger;
 
-public class ackermann {
+	public class ackermann {
 
 	public static final BigInteger TWO = BigInteger.valueOf(2);
 
