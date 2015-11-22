@@ -46,3 +46,64 @@ Schreiben Sie innerhalb der main-Methode einen geeigneten Testrahmen, damit Sie 
 Finden dann die Kupferne (copper or wool wedding - nach 7 Jahren)- und die Silberne Hochzeit (silver wedding) in Frieden oder im Streit statt?
 Verstehen sich Homer und Marge über die Jahre hinweg besser oder schlechter?
 */
+
+public class simpsonsFight {
+
+	public static int[] differenceDisputes(int x){
+		int[] diffDisp = new int[x];
+		int lastDispute = 0;
+		int actualDispute = 1;
+		int i = 1;
+
+		while (i<x){
+			if (dispute(actualDispute)==true){
+				diffDisp[i] = (actualDispute-lastDispute);
+				lastDispute=actualDispute;
+				i++;
+			}
+			actualDispute++;
+		}
+		return diffDisp;
+	}
+
+	public static boolean dispute(int n){
+		if (marge(n)==homer(n)){
+			return false;
+		}else return true;
+	}
+
+	public static int homer(int n){
+		if (n<=0){
+			return 0;
+		} else {
+			return n-marge(homer(n-1));
+		}
+	}
+
+	public static int marge(int n){
+		if (n==0){
+			return 1;
+		} else if (n<0){
+			return 0;
+		} else {
+			return n - homer(marge(n-1));
+		}
+	}
+
+	public static void main(String[] args) {
+		System.out.println("Haben Homer und Marge am 7. Hochzeitstag einen Streit? " + dispute(7));		//Ja
+		System.out.println("Haben Homer und Marge am 25. Hochzeitstag einen Streit? " + dispute(25));	//Nein
+		for (int i=1;i<25;i++) System.out.println(dispute(i));
+
+		int[] test=new int[8];
+		test=differenceDisputes(8);
+
+		for (int i=0;i<test.length;i++){			//Dies ist die Fibonacci-Folge
+			System.out.println(test[i]);
+		}
+
+		//Homer und Marge verstehen sich im Laufe der Zeit besser
+
+	}
+
+}
